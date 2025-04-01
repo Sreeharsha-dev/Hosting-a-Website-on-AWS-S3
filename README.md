@@ -85,14 +85,14 @@ This repository contains files and instructions for hosting a static website usi
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::<bucket-name>/*"
+            "Resource": "arn:aws:s3:::nextwork-website-project-sreeharsha/index.html"
         },
         {
             "Sid": "BucketPutDelete",
             "Effect": "Deny",
             "Principal": "*",
             "Action": "s3:DeleteObject",
-            "Resource": "arn:aws:s3:::<bucket-name>/*"
+            "Resource": "arn:aws:s3:::nextwork-website-project-sreeharsha/index.html"
         }
     ]
 }
