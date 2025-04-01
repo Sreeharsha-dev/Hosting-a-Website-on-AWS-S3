@@ -35,8 +35,8 @@ This repository contains files and instructions for hosting a static website usi
 **Note:** Your bucket name must be globally unique across all AWS accounts.
 
 ### Step 2: Upload Web Files
-![Uploaded the web files](images/picture2.jpg)
-![S3 Dashboard with uploaded files](images/picture3.jpg)
+![Uploaded the web files](images/picture-2.png)
+![S3 Dashboard with uploaded files](images/picture-3.png)
 
 1. Click on your newly created bucket
 2. Click "Upload" button
@@ -52,7 +52,7 @@ This repository contains files and instructions for hosting a static website usi
 - Any other assets your website uses
 
 ### Step 3: Configure Static Website Hosting
-![Static website hosting setup](images/picture4.jpg)
+![Static website hosting setup](images/picture-4.png)
 
 1. Select your bucket and go to the "Properties" tab
 2. Scroll down to "Static website hosting" and click "Edit"
@@ -62,7 +62,7 @@ This repository contains files and instructions for hosting a static website usi
 6. Click "Save changes"
 
 ### Step 4: Set Bucket Permissions
-![Public access setup](images/picture5.jpg)
+![Public access setup](images/picture-5.png)
 
 1. Go to the "Permissions" tab
 2. Under "Block public access," click "Edit"
@@ -70,7 +70,7 @@ This repository contains files and instructions for hosting a static website usi
 4. Click "Save changes" and confirm by typing "confirm"
 
 ### Step 5: Create a Bucket Policy
-![Creating a policy](images/picture7.jpg)
+![Creating a policy](images/picture-7.png)
 
 1. Still in the "Permissions" tab, scroll down to "Bucket policy" and click "Edit"
 2. Copy and paste the following policy (replace `your-bucket-name` with your actual bucket name):
@@ -78,16 +78,25 @@ This repository contains files and instructions for hosting a static website usi
 ```json
 {
     "Version": "2012-10-17",
+    "Id": "MyBucketPolicy",
     "Statement": [
         {
             "Sid": "PublicReadGetObject",
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::nextwork-website-project-sreeharsha/*"
+            "Resource": "arn:aws:s3:::<bucket-name>/*"
+        },
+        {
+            "Sid": "BucketPutDelete",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:DeleteObject",
+            "Resource": "arn:aws:s3:::<bucket-name>/*"
         }
     ]
 }
+
 ```
 
 3. Click "Save changes"
@@ -95,7 +104,7 @@ This repository contains files and instructions for hosting a static website usi
 This policy allows public read access to all objects in your bucket.
 
 ### Step 6: Access Your Website
-![Hosted website](images/picture6.jpg)
+![Hosted website](images/picture-6.png)
 
 1. Go back to the "Properties" tab
 2. Scroll down to "Static website hosting"
