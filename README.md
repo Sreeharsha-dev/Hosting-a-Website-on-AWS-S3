@@ -23,7 +23,7 @@ This repository contains files and instructions for hosting a static website usi
 ## Step-by-Step Guide
 
 ### Step 1: Create an S3 Bucket
-![Created the S3 bucket](images/picture1.jpg)
+![Created the S3 bucket](images/picture-1.png)
 
 1. Sign in to the AWS Management Console
 2. Navigate to S3 service
